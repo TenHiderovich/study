@@ -23,6 +23,12 @@ module Exercise
 
       # Написать свою функцию my_compact
       def my_compact
+        result = self.class.new
+
+        func = -> (item) { result << item if !item.nil? }
+        self.my_each(&func)
+
+        return result
       end
 
       # Написать свою функцию my_reduce
