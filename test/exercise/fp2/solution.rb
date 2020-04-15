@@ -33,6 +33,17 @@ module Exercise
 
       # Написать свою функцию my_reduce
       def my_reduce
+        if accumulator.nil?
+          accumulator, *list = self
+        else
+          list = self
+        end
+
+        self.class.new(list).my_each do |element|
+          accumulator = block.call(accumulator, element) unless element.nil?
+        end
+
+        return accumulator
       end
     end
   end
