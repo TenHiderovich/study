@@ -13,6 +13,12 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
+        result = self.class.new
+
+        func = -> (item) { result << yield(item) }
+        self.my_each(&func)
+
+        return result
       end
 
       # Написать свою функцию my_compact
