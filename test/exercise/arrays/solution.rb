@@ -6,7 +6,7 @@ module Exercise
         result = array.map do |item|
           item > 0 ? max : item
         end
-        return result
+        result
       end
 
       def search(array, query)
