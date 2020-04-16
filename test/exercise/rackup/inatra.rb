@@ -4,7 +4,7 @@ module Inatra
       instance_eval(&block)
     end
 
-    def method_missing(method, url, &block)
+    def method_missing(method, url)
       method_name = method.to_s.upcase
       @route ||= {}
       if @route.key?(method_name)
