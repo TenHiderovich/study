@@ -6,7 +6,7 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
-        for item in self 
+        for item in self
           yield(item)
         end
       end
@@ -16,34 +16,25 @@ module Exercise
         result = self.class.new
 
         func = -> (item) { result << yield(item) }
-        self.my_each(&func)
+        my_each(&func)
 
-        return result
+        result
       end
 
       # Написать свою функцию my_compact
       def my_compact
         result = self.class.new
 
-        func = -> (item) { result << item if !item.nil? }
-        self.my_each(&func)
+        func = -> (item) { result << item unless item.nil? }
+        my_each(&func)
 
-        return result
+        result
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce
-        if accumulator.nil?
-          accumulator, *list = self
-        else
-          list = self
-        end
-
-        self.class.new(list).my_each do |element|
-          accumulator = block.call(accumulator, element) unless element.nil?
-        end
-
-        return accumulator
+      def my_reduce(acc = nil)
+        my_each { |element| acc = acc.nil? ? element : yield(acc, element) }
+        acc
       end
     end
   end
