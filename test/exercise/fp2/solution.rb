@@ -13,22 +13,14 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
-        result = self.class.new
-
-        func = -> (item) { result << yield(item) }
-        my_each(&func)
-
-        result
+        func = -> (acc, item) { acc << yield(item) }
+        my_reduce(self.class.new, &func)
       end
 
       # Написать свою функцию my_compact
       def my_compact
-        result = self.class.new
-
-        func = -> (item) { result << item unless item.nil? }
-        my_each(&func)
-
-        result
+        func = -> (acc, item) { acc << item unless item.nil? }
+        my_reduce(self.class.new, &func)
       end
 
       # Написать свою функцию my_reduce
