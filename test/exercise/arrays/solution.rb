@@ -9,9 +9,9 @@ module Exercise
         result
       end
 
-      def search(_array, _query)
-        result = _array.index(_query)
-        result == nil ? -1 : result
+      def search(array, query)
+        result = array.index(query)
+        result.nil? ? -1 : result
       end
     end
   end
