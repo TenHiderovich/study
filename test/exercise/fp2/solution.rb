@@ -19,7 +19,7 @@ module Exercise
 
       # Написать свою функцию my_compact
       def my_compact
-        func = -> (acc, item) { acc << item unless item.nil? }
+        func = -> (acc, item) { item.nil? ? acc : acc << item }
         my_reduce(self.class.new, &func)
       end
 
