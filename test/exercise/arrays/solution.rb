@@ -26,7 +26,7 @@ module Exercise
           middle
         elsif value > 0
           search_result = search(array[0..middle - 1], query)
-          search_result == -1 ? -1 : search_result
+          search_result
         else
           search_result = search(array[middle + 1..length - 1], query)
           search_result == -1 ? -1 : search_result + middle + 1
