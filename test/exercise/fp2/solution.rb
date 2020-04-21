@@ -6,9 +6,12 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
-        for item in self
-          yield(item)
+        i = 0
+        while length > i
+          yield(self[i])
+          i += 1
         end
+        self
       end
 
       # Написать свою функцию my_map
