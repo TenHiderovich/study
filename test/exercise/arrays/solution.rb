@@ -2,10 +2,10 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        func = -> (a, e) { a > e ? a : e }
+        func = ->(a, e) { a > e ? a : e }
         max = array.reduce(&func)
         result = array.map do |item|
-          item > 0 ? max : item
+          item.positive? ? max : item
         end
         result
       end
@@ -22,9 +22,9 @@ module Exercise
         middle = length / 2
         value = array[middle] - query
 
-        if value == 0
+        if value.zero?
           middle
-        elsif value > 0
+        elsif value.positive?
           search_result = search(array[0..middle - 1], query)
           search_result
         else
